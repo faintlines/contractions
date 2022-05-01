@@ -1,4 +1,5 @@
 from itertools import product
+import os
 from textsearch import TextSearch
 
 import json
@@ -68,23 +69,23 @@ for k, v in contractions_dict.items():  # contractions_dict.items():
 
 slang_dict.update(unsafe_dict)
 
-ts_leftovers = TextSearch("insensitive", "norm")
+ts_leftovers = TextSearch("insensitive", "norm", replace_foreign_chars=True)
 ts_leftovers.add(contractions_dict)
 ts_leftovers.add(leftovers_dict)
 
-ts_leftovers_slang = TextSearch("insensitive", "norm")
+ts_leftovers_slang = TextSearch("insensitive", "norm", replace_foreign_chars=True)
 ts_leftovers_slang.add(contractions_dict)
 ts_leftovers_slang.add(leftovers_dict)
 ts_leftovers_slang.add(slang_dict)
 
-ts_slang = TextSearch("insensitive", "norm")
+ts_slang = TextSearch("insensitive", "norm", replace_foreign_chars=True)
 ts_slang.add(contractions_dict)
 ts_slang.add(slang_dict)
 
-ts_basic = TextSearch("insensitive", "norm")
+ts_basic = TextSearch("insensitive", "norm", replace_foreign_chars=True)
 ts_basic.add(contractions_dict)
 
-ts_view_window = TextSearch("insensitive", "object")
+ts_view_window = TextSearch("insensitive", "object", replace_foreign_chars=True)
 ts_view_window.add(list(contractions_dict.keys()))
 ts_view_window.add(list(leftovers_dict.keys()))
 ts_view_window.add(list(slang_dict.keys()))
