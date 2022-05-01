@@ -1,5 +1,4 @@
 from itertools import product
-import os
 from textsearch import TextSearch
 
 import json
